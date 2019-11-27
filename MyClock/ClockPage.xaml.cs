@@ -111,6 +111,8 @@ namespace MyClock
             secondHand.Rotation = 6 * (dateTime.Second + t);
 
             // Do a check of alarms.
+            // TODO: should not be here
+            // TODO: 更好的控制检测频率
             if (dateTime.Second % 30 == 0 && dateTime.Millisecond % 100 < 5)  // To avoid the  high cpu occupying
             {
                 Console.WriteLine("Check");
@@ -121,6 +123,7 @@ namespace MyClock
                     {
                         if (isOnTime(a.Time, dateTime))
                         {
+                            // TODO: Notification
                             Console.WriteLine("TODO: Alarm!");
                             a.Work = false;
                             App.Database.SaveAlarmItemAsync(a);
