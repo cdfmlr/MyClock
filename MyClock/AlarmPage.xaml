@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyClock.AlarmPage"
+             Title="Alarm">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+"
+                     Clicked="OnAlarmItemAddClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ListView x:Name="alarmListView"
+              Margin="20"
+              ItemSelected="OnAlarmItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding TimeString}"
+                          Detail="{Binding Note}"/>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
