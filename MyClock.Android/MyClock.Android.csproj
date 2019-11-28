@@ -93,5 +93,32 @@
       <Name>MyClock</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\music.mp3" />
+    <AndroidAsset Include="Assets\hour_0.m4a" />
+    <AndroidAsset Include="Assets\hour_1.m4a" />
+    <AndroidAsset Include="Assets\hour_2.m4a" />
+    <AndroidAsset Include="Assets\hour_3.m4a" />
+    <AndroidAsset Include="Assets\hour_4.m4a" />
+    <AndroidAsset Include="Assets\hour_5.m4a" />
+    <AndroidAsset Include="Assets\hour_6.m4a" />
+    <AndroidAsset Include="Assets\hour_7.m4a" />
+    <AndroidAsset Include="Assets\hour_8.m4a" />
+    <AndroidAsset Include="Assets\hour_9.m4a" />
+    <AndroidAsset Include="Assets\hour_10.m4a" />
+    <AndroidAsset Include="Assets\hour_11.m4a" />
+    <AndroidAsset Include="Assets\hour_12.m4a" />
+    <AndroidAsset Include="Assets\hour_13.m4a" />
+    <AndroidAsset Include="Assets\hour_14.m4a" />
+    <AndroidAsset Include="Assets\hour_15.m4a" />
+    <AndroidAsset Include="Assets\hour_16.m4a" />
+    <AndroidAsset Include="Assets\hour_17.m4a" />
+    <AndroidAsset Include="Assets\hour_18.m4a" />
+    <AndroidAsset Include="Assets\hour_19.m4a" />
+    <AndroidAsset Include="Assets\hour_20.m4a" />
+    <AndroidAsset Include="Assets\hour_21.m4a" />
+    <AndroidAsset Include="Assets\hour_22.m4a" />
+    <AndroidAsset Include="Assets\hour_23.m4a" />
+  </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

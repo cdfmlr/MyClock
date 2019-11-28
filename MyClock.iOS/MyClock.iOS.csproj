@@ -130,4 +130,31 @@
       <Name>MyClock</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\music.mp3" />
+    <BundleResource Include="Resources\hour_0.m4a" />
+    <BundleResource Include="Resources\hour_1.m4a" />
+    <BundleResource Include="Resources\hour_2.m4a" />
+    <BundleResource Include="Resources\hour_3.m4a" />
+    <BundleResource Include="Resources\hour_4.m4a" />
+    <BundleResource Include="Resources\hour_5.m4a" />
+    <BundleResource Include="Resources\hour_6.m4a" />
+    <BundleResource Include="Resources\hour_7.m4a" />
+    <BundleResource Include="Resources\hour_8.m4a" />
+    <BundleResource Include="Resources\hour_9.m4a" />
+    <BundleResource Include="Resources\hour_10.m4a" />
+    <BundleResource Include="Resources\hour_11.m4a" />
+    <BundleResource Include="Resources\hour_12.m4a" />
+    <BundleResource Include="Resources\hour_13.m4a" />
+    <BundleResource Include="Resources\hour_14.m4a" />
+    <BundleResource Include="Resources\hour_15.m4a" />
+    <BundleResource Include="Resources\hour_16.m4a" />
+    <BundleResource Include="Resources\hour_17.m4a" />
+    <BundleResource Include="Resources\hour_18.m4a" />
+    <BundleResource Include="Resources\hour_19.m4a" />
+    <BundleResource Include="Resources\hour_20.m4a" />
+    <BundleResource Include="Resources\hour_21.m4a" />
+    <BundleResource Include="Resources\hour_22.m4a" />
+    <BundleResource Include="Resources\hour_23.m4a" />
+  </ItemGroup>
 </Project>

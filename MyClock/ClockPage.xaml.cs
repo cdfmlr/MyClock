@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
+using Plugin.SimpleAudioPlayer;
 using Xamarin.Forms;
 
 namespace MyClock
 {
     public partial class ClockPage : ContentPage
     {
+
+        ISimpleAudioPlayer _player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+        int _lastCheck = -1;
+
         // Structure for storing information about the three hands.
         struct HandParams
         {
@@ -91,8 +95,12 @@ namespace MyClock
 
         bool OnTimerTick()
         {
-            // Set rotation angles for hour and minute hands.
             DateTime dateTime = DateTime.Now;
+
+            // For displaying the time in text.
+            BindingContext = dateTime;
+
+            // Set rotation angles for hour and minute hands.
             hourHand.Rotation = 30 * (dateTime.Hour % 12) + 0.5 * dateTime.Minute;
             minuteHand.Rotation = 6 * dateTime.Minute + 0.1 * dateTime.Second;
 
@@ -111,36 +119,78 @@ namespace MyClock
             secondHand.Rotation = 6 * (dateTime.Second + t);
 
             // Do a check of alarms.
-            // TODO: should not be here
-            // TODO: 更好的控制检测频率
-            if (dateTime.Second % 30 == 0 && dateTime.Millisecond % 100 < 5)  // To avoid the  high cpu occupying
+            if (dateTime.Second % 30 <= 1 && dateTime.Minute != _lastCheck)  // To avoid the  high cpu occupying
             {
-                Console.WriteLine("Check");
+                Console.WriteLine("Check, Second: " + dateTime.Second);
+
+                _lastCheck = dateTime.Minute;
+
+                // Auto stop playing after a while.
+                if (_player.IsPlaying)
+                {
+                    _player.Stop();
+                }
+
+                // 整点
+                if (onTheHourToggle.IsToggled && dateTime.Minute == 0)
+                {
+                    Console.WriteLine("Clock: " + dateTime.Hour);
+                    Notify(dateTime.Hour);
+                }
+
+                // 定时
                 List<AlarmItem> alarms = App.Database.GetAlarmItems();
                 foreach (var a in alarms)
                 {
-                    if (a.Work)
+                    if (a.Work && isOnTime(a.Time, dateTime))
                     {
-                        if (isOnTime(a.Time, dateTime))
-                        {
-                            // TODO: Notification
-                            Console.WriteLine("TODO: Alarm!");
-                            a.Work = false;
-                            App.Database.SaveAlarmItemAsync(a);
-                        }
-                    }
+                        Console.WriteLine("Alarm: " + a);
 
+                        Notify(a);
+
+                        a.Work = false;
+                        App.Database.SaveAlarmItemAsync(a);
+                    }
                 }
             }
-
-            // For displaying the time in text.
-            BindingContext = dateTime;
             return true;
         }
 
         bool isOnTime(TimeSpan t, DateTime d)
         {
             return t.Hours == d.Hour && t.Minutes == d.Minute;
+        }
+
+        /**
+         * 定时提醒
+         */
+        async void Notify(AlarmItem alarmItem)
+        {
+            if (_player.IsPlaying)
+            {
+                _player.Stop();
+            }
+            _player.Load("music.mp3");
+            _player.Play();
+
+            await DisplayAlert(alarmItem.TimeString, alarmItem.Note, "OK");
+            if (_player.IsPlaying)
+            {
+                _player.Stop();
+            }
+        }
+
+        /**
+         * 整点报时
+         */
+        async void Notify(int hour)
+        {
+            if (_player.IsPlaying)
+            {
+                _player.Stop();
+            }
+            _player.Load("hour_" + hour + ".m4a");
+            _player.Play();
         }
     }
 }
