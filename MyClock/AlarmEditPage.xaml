@@ -2,27 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyClock.AlarmEditPage"
-             Title="详情">
+             Title="设置闹钟">
     <StackLayout Margin="20, 35, 20, 20">
+        <Label Text="时间:"/>
         <TimePicker Time="{Binding Time}"
                     Format="T" />
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Enable:" />
-            <Switch HorizontalOptions="EndAndExpand"
+        <StackLayout Orientation="Vertical">
+            <Label Text="启用:" />
+            <Switch HorizontalOptions="StartAndExpand"
                     IsToggled="{Binding Work}" />
         </StackLayout>
-        <Editor Placeholder="Enter a note"
+        <Label Text="注释:"/>
+        <Editor Placeholder="输入注释"
                 Text="{Binding Note}"
+                MaxLength="300"
                 HeightRequest="100" />
-        <Grid>
+        <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Text="Save"
+            <Button Text="保存"
                     Clicked="OnSaveButtonClicked" />
             <Button Grid.Column="1"
-                    Text="Delete"
+                    Text="删除"
                     Clicked="OnDeleteButtonClicked" />
         </Grid>
     </StackLayout>

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyClock.ClockPage"
-             Title="Clock">
+             Title="时间">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <On Platform="iOS" Value="0, 20, 0, 0" />
@@ -53,9 +53,9 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <StackLayout Orientation="Horizontal" Margin="50, 30, 50, 30">
+        <StackLayout Orientation="Vertical" Margin="50, 30, 50, 30">
             <Label Text="整点报时" />
-            <Switch x:Name="onTheHourToggle" HorizontalOptions="EndAndExpand"
+            <Switch x:Name="onTheHourToggle" HorizontalOptions="StartAndExpand"
                     IsToggled="True" />
         </StackLayout>
     </StackLayout>

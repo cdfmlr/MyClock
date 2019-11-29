@@ -191,6 +191,7 @@ namespace MyClock
             }
             _player.Load("hour_" + hour + ".m4a");
             _player.Play();
+            await DisplayAlert("整点报时", "现在时间" + hour + "点整。", "OK");
         }
     }
 }

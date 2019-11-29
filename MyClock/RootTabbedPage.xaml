@@ -8,7 +8,7 @@
     <ContentPage Title="Tab 2" />
     <ContentPage Title="Tab 3" />-->
     <local:ClockPage />
-    <NavigationPage Title="Alarm">
+    <NavigationPage Title="闹钟">
         <x:Arguments>
             <local:AlarmPage />
         </x:Arguments>
