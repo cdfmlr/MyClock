@@ -20,11 +20,6 @@ namespace MyClock
             return _database.Table<AlarmItem>().ToListAsync();
         }
 
-        public List<AlarmItem> GetAlarmItems()
-        {
-            return _database.Table<AlarmItem>().ToListAsync().Result;
-        }
-
         public Task<int> SaveAlarmItemAsync(AlarmItem alarmItem)
         {
             if (alarmItem.ID != 0)

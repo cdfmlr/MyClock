@@ -8,6 +8,14 @@ namespace MyClock
 {
     public partial class ClockPage : ContentPage
     {
+        /**
+         * Based on the source code from Microsoft's examples under the Apache License, Version 2.0
+         *
+         * https://github.com/xamarin/xamarin-forms-samples/tree/master/BoxView/BoxViewClock
+         *
+         * Copyright 2011 Xamarin Inc
+         * 
+         */
 
         ISimpleAudioPlayer _player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
         int _lastCheck = -1;
@@ -27,7 +35,6 @@ namespace MyClock
             public double Offset { private set; get; }  // relative to center pivot
         }
 
-
         static readonly HandParams secondParams = new HandParams(0.02, 1.1, 0.85);
         static readonly HandParams minuteParams = new HandParams(0.05, 0.8, 0.9);
         static readonly HandParams hourParams = new HandParams(0.125, 0.65, 0.9);
@@ -41,18 +48,11 @@ namespace MyClock
             // Create the tick marks (to be sized and positioned later).
             for (int i = 0; i < tickMarks.Length; i++)
             {
-                tickMarks[i] = new BoxView { Color = Color.Black };
+                tickMarks[i] = new BoxView { Color = Color.Gray };
                 absoluteLayout.Children.Add(tickMarks[i]);
             }
 
             Device.StartTimer(TimeSpan.FromSeconds(1.0 / 60), OnTimerTick);// Create the tick marks (to be sized and positioned later).
-            for (int i = 0; i < tickMarks.Length; i++)
-            {
-                tickMarks[i] = new BoxView { Color = Color.Black };
-                absoluteLayout.Children.Add(tickMarks[i]);
-            }
-
-            Device.StartTimer(TimeSpan.FromSeconds(1.0 / 60), OnTimerTick);
         }
 
         void OnAbsoluteLayoutSizeChanged(object sender, EventArgs args)
@@ -139,7 +139,7 @@ namespace MyClock
                 }
 
                 // 定时
-                List<AlarmItem> alarms = App.Database.GetAlarmItems();
+                List<AlarmItem> alarms = App.Database.GetAllAlarmItemsAsync().Result;
                 foreach (var a in alarms)
                 {
                     if (a.Work && isOnTime(a.Time, dateTime))

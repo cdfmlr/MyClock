@@ -10,8 +10,6 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout Margin="20">
-        <Button Text="添加"
-                Clicked="OnAlarmItemAddClicked" />
         <ListView x:Name="alarmListView"
               ItemSelected="OnAlarmItemSelected">
             <ListView.ItemTemplate>
@@ -21,6 +19,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Text="添加"
+                Clicked="OnAlarmItemAddClicked" />
     </StackLayout>
 
 

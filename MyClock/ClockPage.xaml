@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyClock.ClockPage"
+             IconImageSource="shizhong.png"
              Title="时间">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -15,13 +16,14 @@
                         SizeChanged="OnAbsoluteLayoutSizeChanged">
 
             <BoxView x:Name="hourHand"
-                 Color="Black" />
+                 Color="DarkSlateBlue" />
 
             <BoxView x:Name="minuteHand"
-                 Color="Black" />
+                 Color="DarkSlateBlue" />
 
             <BoxView x:Name="secondHand"
-                 Color="Black" />
+                 Color="Red" />
+
         </AbsoluteLayout>
         <Label HorizontalOptions="Center">
             <Label.FormattedText>
@@ -54,8 +56,9 @@
             </Label.FormattedText>
         </Label>
         <StackLayout Orientation="Vertical" Margin="50, 30, 50, 30">
-            <Label Text="整点报时" />
-            <Switch x:Name="onTheHourToggle" HorizontalOptions="StartAndExpand"
+            <Label Text="整点报时"
+                   HorizontalOptions="CenterAndExpand" />
+            <Switch x:Name="onTheHourToggle" HorizontalOptions="CenterAndExpand"
                     IsToggled="True" />
         </StackLayout>
     </StackLayout>

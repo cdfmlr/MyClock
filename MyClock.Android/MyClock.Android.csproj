@@ -119,6 +119,8 @@
     <AndroidAsset Include="Assets\hour_21.m4a" />
     <AndroidAsset Include="Assets\hour_22.m4a" />
     <AndroidAsset Include="Assets\hour_23.m4a" />
+    <AndroidAsset Include="Assets\clock.png" />
+    <AndroidAsset Include="Assets\shizhong.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\add.png" />

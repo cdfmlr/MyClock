@@ -156,6 +156,8 @@
     <BundleResource Include="Resources\hour_21.m4a" />
     <BundleResource Include="Resources\hour_22.m4a" />
     <BundleResource Include="Resources\hour_23.m4a" />
+    <BundleResource Include="Resources\clock.png" />
+    <BundleResource Include="Resources\shizhong.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\add.png" />

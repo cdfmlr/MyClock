@@ -3,14 +3,14 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:MyClock;assembly=MyClock"
             x:Class="MyClock.RootTabbedPage">
-    <!--Pages can be added as references or inline-->
-    <!--<ContentPage Title="Tab 1" />
-    <ContentPage Title="Tab 2" />
-    <ContentPage Title="Tab 3" />-->
+
     <local:ClockPage />
-    <NavigationPage Title="闹钟">
+
+    <NavigationPage Title="闹钟"
+                    IconImageSource="clock.png">
         <x:Arguments>
             <local:AlarmPage />
         </x:Arguments>
     </NavigationPage>
+
 </TabbedPage>
