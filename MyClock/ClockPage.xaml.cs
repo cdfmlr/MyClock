@@ -166,12 +166,19 @@ namespace MyClock
          */
         async void Notify(AlarmItem alarmItem)
         {
-            if (_player.IsPlaying)
+            try
             {
-                _player.Stop();
+                if (_player.IsPlaying)
+                {
+                    _player.Stop();
+                }
+                _player.Load("music.mp3");
+                _player.Play();
+            } catch
+            {
+                // There may catch a Expection when running as a UWP in windows, but nothing wrong in iOS and Android
             }
-            _player.Load("music.mp3");
-            _player.Play();
+
 
             await DisplayAlert(alarmItem.TimeString, alarmItem.Note, "OK");
             if (_player.IsPlaying)
@@ -185,12 +192,20 @@ namespace MyClock
          */
         async void Notify(int hour)
         {
-            if (_player.IsPlaying)
+            try
             {
-                _player.Stop();
+                if (_player.IsPlaying)
+                {
+                    _player.Stop();
+                }
+                _player.Load("hour_" + hour + ".m4a");
+                _player.Play();
             }
-            _player.Load("hour_" + hour + ".m4a");
-            _player.Play();
+            catch
+            {
+                // There may catch a Expection when running as a UWP in windows, but nothing wrong in iOS and Android
+            }
+
             await DisplayAlert("整点报时", "现在时间" + hour + "点整。", "OK");
         }
     }
